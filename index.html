@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>inglesespañol Translator</title>
+</head>
+
+<body>
+
+<h2>inglesespañol translator</h2>
+
+<textarea id="input" rows="6" cols="50"></textarea>
+<br><br>
+
+<button onclick="latinToCyrillic()">Latin → inglesespañol</button>
+<button onclick="cyrillicToLatin()">inglesespañol → Latin</button>
+
+<p id="output"></p>
+
+<script>
+
+const map = {
+a:"á",
+b:"b",
+c:"c",
+d:"d",
+e:"ó",
+f:"f",
+g:"g",
+h:"j",
+i:"i",
+j:"j",
+k:"k",
+l:"l",
+m:"м",
+n:"ñ",
+o:"u",
+p:"p",
+q:"q",
+r:"r",
+s:"s",
+t:"t",
+u:"ù",
+v:"v",
+w:"w",
+x:"x",
+y:"y",
+z:"z"
+
+};
+
+function latinToCyrillic(){
+let text = document.getElementById("input").value.toLowerCase();
+let result = "";
+
+for(let char of text){
+result += map[char] || char;
+}
+
+document.getElementById("output").innerText = result;
+}
+
+function cyrillicToLatin(){
+let reverse = {};
+for(let key in map){
+reverse[map[key]] = key;
+}
+
+let text = document.getElementById("input").value.toLowerCase();
+let result = "";
+
+for(let char of text){
+result += reverse[char] || char;
+}
+
+document.getElementById("output").innerText = result;
+}
+
+</script>
+
+</body>
+</html>
